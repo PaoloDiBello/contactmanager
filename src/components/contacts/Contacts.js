@@ -5,10 +5,10 @@ import { Consumer } from "../../context";
 
 class Contacts extends Component {
     render() {
-        return (
-            <Consumer>
+      return (
+        <Consumer>
                 {value => {
-                    const { contacts } = value;
+                  const { contacts } = value;
                     return (
                         <React.Fragment>
                             <h1 className="display-4 mb-2">

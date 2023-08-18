@@ -41,21 +41,21 @@ class AddContact extends Component {
             email,
             phone
         }
+  try {
+      const res = await axios.post('https://jsonplaceholder.typicode.com/users/', newContact)
+      dispatch({ type: 'ADD_CONTACT', payload: res.data })
+      //dispatch({ type: 'ADD_CONTACT', payload: newContact })
+      this.setState({
+        name: '',
+        email: '',
+        phone: '',
+        errors: {}
+      });
 
-        const res = axios.post('https://jsonplaceholder.typicode.com/users/', newContact)
-        dispatch({ type: 'ADD_CONTACT', payload: res.data })
-        //dispatch({ type: 'ADD_CONTACT', payload: newContact })
-
-        this.setState({
-            name: '',
-            email: '',
-            phone: '',
-            errors: {}
-        })
-
-
-
-        this.props.history.push('/');
+      this.props.history.push('/');
+    } catch (error) {
+      console.warn(error);
+    }
     }
 
     render() {
